@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moving Button</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+      overflow: hidden;
+    }
+
+    #moveButton {
+      position: absolute;
+      padding: 20px 30px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="moveButton">Click me!</button>
+
+  <script>
+    const moveButton = document.getElementById('moveButton');
+
+    // Function to generate a random position within the screen
+    function getRandomPosition() {
+      const x = Math.random() * (window.innerWidth - moveButton.offsetWidth);
+      const y = Math.random() * (window.innerHeight - moveButton.offsetHeight);
+      return { x, y };
+    }
+
+    // Function to move the button when clicked
+    moveButton.addEventListener('click', () => {
+      const { x, y } = getRandomPosition();
+      moveButton.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  </script>
+
+</body>
+</html>
